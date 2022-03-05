@@ -60,24 +60,16 @@ describe('<App /> integration', () => {
     expect(AppWrapper.state('events')).toEqual(allEvents);
     AppWrapper.unmount();
   })
-  // test('number of events state changes with input from NumberOfEvents', async () => {
-  //   const AppWrapper = mount(<App />);
-  //   const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
-  //   await NumberOfEventsWrapper.find(".number-of-events-input").simulate('change', {
-  //     target: {
-  //       value: 10
-  //     }
-  //   });
-  //   const AppNumberOfState = AppWrapper.state('eventcount');
-  //   expect(AppNumberOfState).toBe(10);
-  //   AppWrapper.unmount();
-  // })
-  // test('event list has length = NumberOfEvents', () => {
-  //   const AppWrapper = mount(<App />);
-  //   AppWrapper.setState({ eventcount: 3 });
-  //   const EventListWrapper = AppWrapper.find(EventList);
-  //   const AppNumberOfState = AppWrapper.state('eventcount');
-  //   expect(EventListWrapper.find(Event)).toHaveLength(AppNumberOfState);
-  //   AppWrapper.unmount();
-  // })
+  test('number of events state changes with input from NumberOfEvents', async () => {
+    const AppWrapper = mount(<App />);
+    const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+    await NumberOfEventsWrapper.find(".number-of-events-input").simulate('change', {
+      target: {
+        value: 10
+      }
+    });
+    const AppNumberOfState = AppWrapper.state('eventcount');
+    expect(AppNumberOfState).toBe(10);
+    AppWrapper.unmount();
+  })
 });

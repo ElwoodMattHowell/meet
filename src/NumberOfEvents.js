@@ -5,15 +5,16 @@ class NumberOfEvents extends Component {
   //   super();
 
   //   this.state = {
-  //     SelectedNumberOfEvents: 32
+  //     selectedNumberOfEvents: 10
   //   }
   // }
 
-  // setNumberofEvents(e) {
-  //   this.setState({
-  //     SelectedNumberOfEvents: e
-  //   })
-  // }
+  handleInputChange(eventcount) {
+    // this.setState({
+    //   selectedNumberOfEvents: eventcount
+    // })
+    this.props.setEventCount(eventcount);
+  }
 
   render() {
     return (<>
@@ -22,8 +23,8 @@ class NumberOfEvents extends Component {
         <input
           className="number-of-events-input"
           type="number"
-          placeholder={"Number of Events to be Shown"}
-          onChange={e => { this.props.setEventCount(e.target.value) }} />
+          placeholder={this.props.placeholder}
+          onChange={e => { this.handleInputChange(e.target.value) }} />
       </div>
     </>)
 
