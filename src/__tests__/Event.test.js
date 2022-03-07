@@ -19,7 +19,7 @@ describe('<Event /> component', () => {
   })
   test('show details when details button clicked', () => {
     EventWrapper.setState({ expandedDetails: false });
-    EventWrapper.find('.details-button').simulate('click');
+    EventWrapper.find('.details-btn').simulate('click');
     expect(EventWrapper.state('expandedDetails')).toBe(true);
   })
 })
