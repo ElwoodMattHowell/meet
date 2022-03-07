@@ -1,7 +1,15 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:500);
+
+body {
+  height: 100vh;
+  background: linear-gradient(to right bottom, #ff91a4, #ff4040) fixed no-repeat; 
+}
+
 .App {
+  height: 100%;
   text-align: center;
   padding: 2% 5%;
+  /* background-image: linear-gradient(to right bottom, #ff91a4, #ff4040);  */
 }
 
 .App * {
@@ -49,6 +57,16 @@ input[type="number"] {
   position: relative;
 }
 
+.NumberOfEvents {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 300px;
+  max-width: 300px;
+  margin: auto;
+  margin-top: 20px;
+  position: relative;
+}
+
 .suggestions {
   width: 250px;
   position: absolute;
@@ -77,6 +95,7 @@ input[type="number"] {
 }
 
 .event {
+  background-color: aqua;
   padding: 10px 10px 35px;
   margin-bottom: 10px;
   text-align: left;
@@ -85,9 +104,24 @@ input[type="number"] {
   position: relative;
 }
 
+.eventlist {
+  columns: 2;
+}
+
+.mineventlist {
+  columns: 1;
+}
+
+.eventlist > li {
+  display: inline-block;
+  width: 100%;
+}
+
 .details-btn {
+  background-color:  #ff4040; 
+  color: white;
   position: absolute;
-  right: 5px;
+  left: 5px;
   bottom: 5px;
   padding: 5px 8px;
   border-radius: 4px;
@@ -209,5 +243,11 @@ input[type="number"] {
     max-width: 50%;
     min-width: auto;
     margin: 0 auto;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .eventlist {
+    columns: 1;
   }
 }

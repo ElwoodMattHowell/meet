@@ -1,25 +1,17 @@
 import React, { Component } from 'react';
 
 class NumberOfEvents extends Component {
-  // constructor() {
-  //   super();
-
-  //   this.state = {
-  //     selectedNumberOfEvents: 10
-  //   }
-  // }
 
   handleInputChange(eventcount) {
-    // this.setState({
-    //   selectedNumberOfEvents: eventcount
-    // })
     this.props.setEventCount(eventcount);
   }
 
   render() {
     return (<>
-      <div>
-        <label>Number of Events</label>
+      <div className="NumberOfEvents">
+        <label>
+          <p><strong>Number of events to be shown</strong></p>
+        </label>
         <input
           className="number-of-events-input"
           type="number"
