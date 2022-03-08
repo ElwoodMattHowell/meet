@@ -108,8 +108,14 @@ input[type="number"] {
   columns: 2;
 }
 
+.EventContainer {
+  display: flex;
+  justify-content: center;
+}
+
 .mineventlist {
   columns: 1;
+  width: 50%;
 }
 
 .eventlist > li {
@@ -249,5 +255,9 @@ input[type="number"] {
 @media only screen and (max-width: 750px) {
   .eventlist {
     columns: 1;
+    width: 100%;
+  }
+  .mineventlist {
+    width: 100%;
   }
 }

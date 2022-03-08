@@ -24,7 +24,7 @@ class Event extends Component {
           <p className="date-time">{event.start.dateTime}({event.start.timeZone})</p>
           <p className="location">@{event.summary} | {event.location}</p>
           {expandedDetails && (
-            <div>
+            <div className="event__Details">
               <h2>About Event</h2>
               <a href={event.htmlLink} target="blank">See details on Google Calendar</a>
               <p>{event.description}</p>
