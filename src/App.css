@@ -6,10 +6,10 @@ body {
 }
 
 .App {
+  margin-top: 40px;
   height: 100%;
   text-align: center;
   padding: 2% 5%;
-  /* background-image: linear-gradient(to right bottom, #ff91a4, #ff4040);  */
 }
 
 .App * {
@@ -73,7 +73,7 @@ input[type="number"] {
   z-index: 2;
   align-self: center;
   margin: 0;
-  top: 43px;
+  top: 65px;
   font-size: 14px;
   box-shadow: 10px 10px 16px -12px rgba(0, 0, 0, 0.75);
 }
@@ -100,7 +100,7 @@ input[type="number"] {
   margin-bottom: 10px;
   text-align: left;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 15px;
   position: relative;
 }
 
@@ -127,7 +127,7 @@ input[type="number"] {
   background-color:  #ff4040; 
   color: white;
   position: absolute;
-  left: 5px;
+  left: 20px;
   bottom: 5px;
   padding: 5px 8px;
   border-radius: 4px;
@@ -168,7 +168,28 @@ input[type="number"] {
   font-family: sans-serif;
 }
 
-.Alert {
+.alert-container {
+  position: fixed;
+  top: 10px;
+  right: 50%;
+  height: 3em;
+  padding: 30px;
+}
+.alert-container-visible {
+  position: fixed;
+  top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 35%;
+  left: 35%;
+  border-radius: 25px;
+  height: 3em;
+  background-color: #eee;
+  padding: 30px;
+}
+
+.alert {
   position: fixed;
   top: 20px;
 }
