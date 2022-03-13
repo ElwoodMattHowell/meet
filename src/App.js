@@ -3,29 +3,38 @@ import React, { Component } from 'react';
 import EventList from './EventList.js';
 import CitySearch from './CitySearch.js';
 import NumberOfEvents from './NumberOfEvents.js';
+import WelcomeScreen from './WelcomeScreen';
 
 import './nprogress.css';
 import './App.css';
-import { extractLocations, getEvents } from './api.js';
+import { extractLocations, getEvents, checkToken, getAccessToken } from './api.js';
 
 class App extends Component {
   state = {
     events: [],
     locations: [],
     eventcount: 10,
-    currentLocation: 'all'
+    currentLocation: 'all',
+    showWelcomeScreen: undefined
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     this.mounted = true;
-    getEvents().then((events) => {
-      if (this.mounted) {
-        this.setState({
-          events: events.slice(0, this.state.eventcount),
-          locations: extractLocations(events)
-        });
-      }
-    });
+    const accessToken = localStorage.getItem('access_token');
+    const isTokenValid = (await checkToken(accessToken)).error ? false : true;
+    const searchParams = new URLSearchParams(window.location.search);
+    const code = searchParams.get('code');
+    this.setState({ showWelcomeScreen: !(code || isTokenValid) });
+    if ((code || isTokenValid) && this.mounted) {
+      getEvents().then((events) => {
+        if (this.mounted) {
+          this.setState({
+            events: events.slice(0, this.state.eventcount),
+            locations: extractLocations(events)
+          });
+        }
+      });
+    }
   }
 
   componentWillUnmount() {
@@ -53,6 +62,8 @@ class App extends Component {
   }
 
   render() {
+    if (this.state.showWelcomeScreen === undefined) return <div className="App" />
+
     return (
       <div className="App">
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
@@ -60,6 +71,7 @@ class App extends Component {
         <div className="EventContainer">
           <EventList events={this.state.events} />
         </div>
+        <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen} getAccessToken={() => { getAccessToken() }} />
       </div>
     );
   }
