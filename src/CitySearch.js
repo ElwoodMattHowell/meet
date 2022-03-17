@@ -49,7 +49,7 @@ class CitySearch extends Component {
           <InfoAlert text={this.state.infoText} className="alert" />
         </div>
         <label>
-          <p><strong>Enter your location</strong></p>
+          <p><strong>Enter Shity closest to you</strong></p>
         </label>
         <input
           type="text"

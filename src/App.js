@@ -4,6 +4,7 @@ import EventList from './EventList.js';
 import CitySearch from './CitySearch.js';
 import NumberOfEvents from './NumberOfEvents.js';
 import WelcomeScreen from './WelcomeScreen';
+import { WarningAlert } from './Alert';
 
 import './nprogress.css';
 import './App.css';
@@ -15,11 +16,21 @@ class App extends Component {
     locations: [],
     eventcount: 10,
     currentLocation: 'all',
-    showWelcomeScreen: undefined
+    // showWelcomeScreen: undefined,
+    warningText: ""
   }
 
   async componentDidMount() {
     this.mounted = true;
+    if (!navigator.onLine) {
+      this.setState({
+        warningText: "You are currently off line"
+      });
+    } else {
+      this.setState({
+        warningText: ""
+      });
+    }
     const accessToken = localStorage.getItem('access_token');
     const isTokenValid = (await checkToken(accessToken)).error ? false : true;
     const searchParams = new URLSearchParams(window.location.search);
@@ -70,6 +81,9 @@ class App extends Component {
         <NumberOfEvents setEventCount={this.setEventCount} placeholder={this.state.eventcount} />
         <div className="EventContainer">
           <EventList events={this.state.events} />
+        </div>
+        <div className={this.state.warningText === "" ? "alert-container" : "alert-container-visible"}>
+          <WarningAlert text={this.state.warningText} />
         </div>
         <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen} getAccessToken={() => { getAccessToken() }} />
       </div>
