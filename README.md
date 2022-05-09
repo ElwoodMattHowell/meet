@@ -1,6 +1,10 @@
-# meet
+# meet app
 
 <h2>Project Details</h2>
+The Meet App is a serverless, progressive web application (PWA) built with React using a
+test-driven development (TDD) technique. The application uses the Google
+Calendar API to fetch upcoming events.
+
 <h2>Key Features</h2>
 
 -  Filter events by city.
@@ -115,4 +119,20 @@
     - When: The user wants to see upcoming events
     
     - Then: The user will be able to see a chart of upcoming events
+    
+<h2>Built with</h2>
+
+
+-  HTML/CSS 
+
+-  JavaScriptReact
+
+-  Jest
+
+-  Cucumber
+
+-  Puppeteer
+
+-  Recharts
+
 
